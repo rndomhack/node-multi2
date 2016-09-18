@@ -145,7 +145,7 @@ private:
 
 		uint8_t *data = (uint8_t *)node::Buffer::Data(buffer);
 
-		DATAKEY scrambleKeyOdd = { 
+		DATAKEY scrambleKeyOdd = {
 			ReadUInt32BE(data),
 			ReadUInt32BE(data + 4)
 		};
@@ -249,7 +249,6 @@ private:
 			}
 
 			switch (remainLength) {
-				default: __assume(0);
 				case 7: *(data + bytesRead + 6) ^= (cbc.right >> 8) & 0xFF;
 				case 6: *(data + bytesRead + 5) ^= (cbc.right >> 16) & 0xFF;
 				case 5: *(data + bytesRead + 4) ^= (cbc.right >> 24) & 0xFF;
@@ -287,7 +286,7 @@ private:
 
 		Pi3(dataKey, systemKey.key6, systemKey.key7);
 		workKey.key6 = dataKey.right;
-		
+
 		Pi4(dataKey, systemKey.key8);
 		workKey.key7 = dataKey.left;
 
@@ -295,7 +294,7 @@ private:
 		workKey.key8 = dataKey.right;
 	}
 
-	static inline const uint32_t ReadUInt32BE(const uint8_t *src)
+	static inline uint32_t ReadUInt32BE(const uint8_t *src)
 	{
 		return (src[0] << 24) | (src[1] << 16) | (src[2] << 8) | src[3];
 	}
@@ -308,7 +307,7 @@ private:
 		dest[3] = (uint8_t)(src & 0xFF);
 	}
 
-	static inline const uint32_t LeftRotate(const uint32_t value, const uint32_t rotate)
+	static inline uint32_t LeftRotate(const uint32_t value, const uint32_t rotate)
 	{
 		return (value << rotate) | (value >> (32UL - rotate));
 	}
