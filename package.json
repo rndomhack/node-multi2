@@ -1,6 +1,6 @@
 {
   "name": "multi2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MULTI2 utility",
   "main": "index.js",
   "scripts": {

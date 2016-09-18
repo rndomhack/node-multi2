@@ -42,11 +42,7 @@ private:
 		m_hasSystemKey(false),
 		m_hasInitialCbc(false),
 		m_hasWorkKey(false),
-		m_round(4),
-		m_systemKey({ 0 }),
-		m_initialCbc({ 0 }),
-		m_workKeyOdd({ 0 }),
-		m_workKeyEven({ 0 })
+		m_round(4)
 	{};
 	~Multi2() {};
 
